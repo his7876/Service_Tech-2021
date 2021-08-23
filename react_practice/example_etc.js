@@ -15,3 +15,13 @@ const printCar = (car) =>{
 }
 
 printCar(car);
+
+let test = {
+    name : "test",
+    age : 30,
+};
+const printTest = (test) =>{
+    const{name,age} = test;
+    console.log(name,age);
+}
+printTest(test);
