@@ -1,17 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './component/Header';
-import EventExample from './component/EventExample';
-import ListComponent from './component/ListComponent';
+import Header from "./component/Header";
+import EventExample from "./component/EventExample";
+import ListComponent from "./component/ListComponent";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AxiosTest from "./pages/AxiosTest";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <Header title = "메인화면"></Header>
-      <ListComponent></ListComponent>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/test" exact>
+          <Header title = "테스트페이지1"></Header>
+          <EventExample></EventExample>
+        </Route>
+        <Route path="/test2" exact>
+          <Header title = "테스트페이지2"></Header>
+          <ListComponent></ListComponent>
+        </Route>
+        <Route path="/axios" exact>
+          <AxiosTest> </AxiosTest>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
