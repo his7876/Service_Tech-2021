@@ -1,9 +1,11 @@
 import Header from "./component/Header";
-import EventExample from "./component/EventExample";
-import ListComponent from "./component/ListComponent";
+import EventExample from "./component/etc/EventExample";
+import ListComponent from "./component/etc/ListComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AxiosTest from "./pages/AxiosTest";
 import NewsSearch from "./pages/NewsSearch";
+import AddUser from "./pages/AddUser";
+import AuthResult from "./pages/AuthResult";
 function App() {
   return (
     <Router>
@@ -21,6 +23,12 @@ function App() {
         </Route>
         <Route path="/news" exact>
           <NewsSearch> </NewsSearch>
+        </Route>
+        <Route path="/addUser" exact>
+          <AddUser> </AddUser>
+        </Route>
+        <Route path="/authResult" exact>
+          <AuthResult> </AuthResult>
         </Route>
       </Switch>
     </Router>
