@@ -4,7 +4,7 @@ import Header from '../component/Header'
 const AddUser = () => {
     const openAuthSite = ()=>{
         let tmpwindow = window.open("about:blank");
-        let clientId= "클라이언트ID"
+        let clientId= "Client_id"
         tmpwindow.location.href = `https://testapi.openbanking.or.kr/oauth/2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=http://localhost:3000/authResult&scope=login inquiry transfer&state=12345678901234567890123456789012&auth_type=0`;
          
     };

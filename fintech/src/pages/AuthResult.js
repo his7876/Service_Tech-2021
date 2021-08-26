@@ -9,7 +9,7 @@ const AuthResult = () => {
     const {search} = useLocation();
     const {code} = queryString.parse(search);
     const [accessToken, setAccessToken] = useState("토큰 받아오기 전");
-
+    const [userSeqNo , setUserSeqNo] = useState("user seq no");
 
     useEffect(() => {
         getAccessToken();
@@ -19,8 +19,8 @@ const AuthResult = () => {
         console.log("토큰을 가져옵니다");
         const sendData = {
           code: code,
-          client_id: "클라이언트ID",
-          client_secret: "클라이언트 비밀번호",
+          client_id: "Client_id",
+          client_secret: "Client_pwd",
           redirect_uri: "http://localhost:3000/authResult",
           grant_type: "authorization_code",
         };
@@ -31,7 +31,7 @@ const AuthResult = () => {
     
         const option = {
           method: "POST",
-          url: "https://testapi.openbanking.or.kr/oauth/2.0/token",
+          url: "/oauth/2.0/token",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
@@ -41,6 +41,12 @@ const AuthResult = () => {
         axios(option).then((response) => {
           console.log(response.data.access_token);
           setAccessToken(response.data.access_token);
+          setUserSeqNo(response.data.user_seq_no);
+          localStorage.setItem("accessToken",response.data.access_token);
+          localStorage.setItem("userSeqNo",response.data.user_seq_no);
+          //로컬 스토리지에 데이터 저장
+          window.opener.location.href="/main";
+          window.close();
         });
         //axios 오브젝트 설정
       };
@@ -50,6 +56,7 @@ const AuthResult = () => {
           <Header title="인증 결과"></Header>
           <p>인증 코드 : {code}</p>
           <p>AccessToken : {accessToken}</p>
+          <p>UserSeqNo : {userSeqNo}</p>
         </div>
       );
     };
