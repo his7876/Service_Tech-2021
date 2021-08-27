@@ -19,8 +19,8 @@ const AuthResult = () => {
         console.log("토큰을 가져옵니다");
         const sendData = {
           code: code,
-          client_id: "Client_id",
-          client_secret: "Client_pwd",
+          client_id: "id",
+          client_secret: "pwd",
           redirect_uri: "http://localhost:3000/authResult",
           grant_type: "authorization_code",
         };
